@@ -21,16 +21,20 @@ Safe City is a Django REST Framework-based backend system designed to enhance ci
 
 1. **Clone the repository**
 
-- git clone git@github.com:G-Gakii/Safe-city-africa-agility.git
+- git clone `git@github.com:G-Gakii/Safe-city-africa-agility.git`
 - cd Safe-city-africa-agility
 
 2. Set up the virtual environment:`python -m venv env`
 3. activate virtial environment : `source env/bin/activate` # On Windows: `env\Scripts\activate`
 
 4. Install dependencies:`pip install -r requirements.txt`
-5. Run migrations: `python manage.py migrate`
-6. Create a superuser : `python manage.py createsuperuser`
-7. Run the server: `python manage.py runserver`
+5. Set up environment variables:
+   - Create a `.env` file in the project root.
+   - Add the following variables inside the `.env` file:
+     1. `SECRET_KEY="your-secret-key"`
+6. Run migrations: `python manage.py migrate`
+7. Create a superuser : `python manage.py createsuperuser`
+8. Run the server: `python manage.py runserver`
 
 ## API Endpoints
 
