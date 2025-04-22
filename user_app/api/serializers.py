@@ -1,7 +1,7 @@
 
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
-from user_app.models import Status
+
 
 
 User = get_user_model()
@@ -42,10 +42,6 @@ class UserDetailSerializer(serializers.ModelSerializer):
         ]  
           
 
-class StatusSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Status
-        fields = ['id', 'owner', 'status_type', 'name', 'description', 'created_at']
-        read_only_fields = ['id', 'created_at']  
+
 
         
