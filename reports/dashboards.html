@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeCity Report Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #2e7d32;
+            color: white;
+            padding: 15px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        header .logo {
+            font-weight: bold;
+        }
+        .main-content {
+            padding: 20px;
+            min-height: calc(100vh - 140px);
+        }
+        h2 {
+            color: #2e7d32;
+            text-align: center;
+        }
+        .dropdown-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+        }
+        .dropdown {
+            flex: 1 1 45%;
+            max-width: 300px;
+            border: 1px solid #2e7d32;
+            border-radius: 4px;
+            padding: 10px;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .dropdown:hover {
+            transform: scale(1.02);
+        }
+        select {
+            width: 100%;
+            padding: 8px;
+            border: none;
+            font-size: 16px;
+            color: #2e7d32;
+            background-color: transparent;
+            cursor: pointer;
+        }
+        select:focus {
+            outline: none;
+        }
+        footer {
+            background-color: #2e7d32;
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+        footer a {
+            color: #ffffff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        .metric {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #2e7d32;
+        }
+    </style>
+</head>
+<body>
+    <header class="animate__animated animate__fadeInDown">
+        <div class="logo">SafeCity</div>
+        <h1>Report Dashboard</h1>
+    </header>
+
+    <div class="main-content">
+        <h2 class="animate__animated animate__fadeIn">Select Report Category</h2>
+        <div class="dropdown-container">
+            <div class="dropdown animate__animated animate__slideInLeft">
+                <select onchange="fetchMetrics(this)">
+                    <option value="1">ENVIRONMENTAL & SANITATION ISSUES</option>
+                </select>
+                <div class="metric" id="metric-1"></div>
+            </div>
+            <div class="dropdown animate__animated animate__slideInRight">
+                <select onchange="fetchMetrics(this)">
+                    <option value="2">INFRASTRUCTURE ISSUES</option>
+                </select>
+                <div class="metric" id="metric-2"></div>
+            </div>
+            <div class="dropdown animate__animated animate__slideInLeft">
+                <select onchange="fetchMetrics(this)">
+                    <option value="3">PUBLIC SAFETY ISSUES</option>
+                </select>
+                <div class="metric" id="metric-3"></div>
+            </div>
+            <div class="dropdown animate__animated animate__slideInRight">
+                <select onchange="fetchMetrics(this)">
+                    <option value="4">UTILITIES & PUBLIC SERVICES</option>
+                </select>
+                <div class="metric" id="metric-4"></div>
+            </div>
+            <div class="dropdown animate__animated animate__slideInLeft">
+                <select onchange="fetchMetrics(this)">
+                    <option value="5">COMMUNITY & PUBLIC SPACE MAINTENANCE</option>
+                </select>
+                <div class="metric" id="metric-5"></div>
+            </div>
+            <div class="dropdown animate__animated animate__slideInRight">
+                <select onchange="fetchMetrics(this)">
+                    <option value="6">HEALTH & EMERGENCY CONCERNS</option>
+                </select>
+                <div class="metric" id="metric-6"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="animate__animated animate__fadeInUp">
+        <p>© 2025 SafeCity. All rights reserved.</p>
+        <div>
+            <a href="#">About Us</a> |
+            <a href="#">Contact</a> |
+            <a href="#">Privacy Policy</a> |
+            <a href="#">Terms of Service</a>
+        </div>
+    </footer>
+
+    <script>
+        async function fetchMetrics(selectElement) {
+            const categoryId = selectElement.value;
+            const metricDiv = document.getElementById(`metric-${categoryId}`);
+            try {
+                const response = await fetch(`/analytics/`);
+                const data = await response.json();
+                const analytic = data.find(item => item.category.id === parseInt(categoryId));
+                if (analytic) {
+                    metricDiv.textContent = `Avg Resolution Time: ${analytic.average_resolution_time ? analytic.average_resolution_time.toFixed(2) + ' hrs' : 'N/A'} | Total Reports: ${analytic.total_reports}`;
+                } else {
+                    metricDiv.textContent = 'No data available';
+                }
+            } catch (error) {
+                metricDiv.textContent = 'Error fetching data';
+                console.error('Error:', error);
+            }
+        }
+    </script>
+</body>
+</html>
