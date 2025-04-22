@@ -29,5 +29,5 @@ def handle_report_notifications(sender, instance, created, **kwargs):
         message,
         settings.DEFAULT_FROM_EMAIL,
         [instance.user.email],
-        fail_silently=True  # Set to False in production
+        fail_silently=False  # Set to False in production
     )
