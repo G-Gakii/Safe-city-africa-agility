@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'report_app',
     'django_filters',
+    'notification_app'
     
 ]
 

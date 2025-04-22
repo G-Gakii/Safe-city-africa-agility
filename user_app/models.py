@@ -74,19 +74,3 @@ def save(self, *args, **kwargs):
         return self.email
 
 
-# class Status(models.Model):
-#     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-#     owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-#     status_type = models.CharField(max_length=50, choices=STATUS_TYPE_CHOICES, default='active')
-#     name = models.CharField(max_length=50, unique=True)
-#     description = models.TextField(blank=True, null=True)
-#     created_at = models.DateTimeField(auto_now_add=True)
-    
-#     class Meta:
-#         verbose_name='Status'
-#         ordering=['-created_at']
-#         unique_together = ('owner', 'name') 
-
-        
-#     def __str__(self):
-#         return self.status_type
