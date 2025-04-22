@@ -21,8 +21,8 @@ Safe City is a Django REST Framework-based backend system designed to enhance ci
 
 1. **Clone the repository**
 
-- git clone https://github.com/your-repo/safe-city.git
-- cd safe-city
+- git clone git@github.com:G-Gakii/Safe-city-africa-agility.git
+- cd Safe-city-africa-agility
 
 2. Set up the virtual environment:`python -m venv env`
 3. activate virtial environment : `source env/bin/activate` # On Windows: `env\Scripts\activate`
@@ -36,31 +36,31 @@ Safe City is a Django REST Framework-based backend system designed to enhance ci
 
 ### User Management
 
-`GET	/api/user/register/` Retrieve all registered users
-`POST	/api/user/register/` Register a new user
-`POST	/api/user/login/` Obtain authentication token
-`GET	/api/user/users/<int:pk>/` Retrieve user details
-`PUT	/api/user/users/<int:pk>/` Update user details
-`DELETE	/api/user/users/<int:pk>/` Delete a user
+- `GET	/api/user/register/` Retrieve all registered users
+- `POST	/api/user/register/` Register a new user
+- `POST	/api/user/login/` Obtain authentication token
+- `GET	/api/user/users/<int:pk>/` Retrieve user details
+- `PUT	/api/user/users/<int:pk>/` Update user details
+- `DELETE	/api/user/users/<int:pk>/` Delete a user
 
 ### Reports
 
-`GET	/api/report/` List all reports
-`POST	/api/report/` Create a new report
-`GET	/api/report/report/<uuid:pk>/` Retrieve a specific report
-`PUT	/api/report/report/<uuid:pk>/` Update a report
-`DELETE	/api/report/report/<uuid:pk>/` Delete a report
+- `GET	/api/report/` List all reports
+- `POST	/api/report/` Create a new report
+- `GET	/api/report/report/<uuid:pk>/` Retrieve a specific report
+- `PUT	/api/report/report/<uuid:pk>/` Update a report
+- `DELETE	/api/report/report/<uuid:pk>/` Delete a report
 
 ### Notifications
 
-`GET	/api/notifications/recent/` Retrieve recent unread notifications
-`GET	/api/notifications/all/` Retrieve all notifications with filtering
-`POST	/api/notifications/mark-read/<uuid:notification_id>/` Mark notification as read
-`GET	/api/notifications/unread-count/` Get the count of unread notifications
+- `GET	/api/notifications/recent/` Retrieve recent unread notifications
+- `GET	/api/notifications/all/` Retrieve all notifications with filtering
+- `POST	/api/notifications/mark-read/<uuid:notification_id>/` Mark notification as read
+- `GET	/api/notifications/unread-count/` Get the count of unread notifications
 
 ### Analytics
 
-`GET	/api/analytics/` Retrieve analytics with filtering by user or category
+- `GET	/api/analytics/` Retrieve analytics with filtering by user or category
 
 ### Authentication
 
