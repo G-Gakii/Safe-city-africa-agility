@@ -14,7 +14,7 @@ class ReportList(generics.ListCreateAPIView):
     queryset = Report.objects.all()
     serializer_class =ReportSerializer
     filter_backends = [filters.SearchFilter]
-    search_fields = ['user_id', 'category_id','status']
+    search_fields = ['user', 'category','status']
     
     
     def perform_create(self, serializer):
